@@ -7,12 +7,14 @@ Page({
     modalHidden: true,
     srcsc:'收藏',
     srcsimg:'/screenshots/user_star.png',
-    wd:'我的',
-    wdsrc:'/screenshots/user_collection.png',
+    wd:'全部',
+    wdsrc:'/screenshots/clear_all.png',
     wdm:'',
     pid:'',
     sssjjjjsrc:'',
-    sssjjjj:''
+    sssjjjj:'',
+    kkgg:'0',
+    sscc:'0'
 
   },
   onLoad: function(options) {
@@ -132,7 +134,7 @@ Page({
         })*/
     return {
       title: 'iswtf.com',
-      path: '/pages'
+      path: '/pages/index/index'
     }
 },
   // Event handler.
@@ -307,6 +309,7 @@ Page({
                 wx.login({
                   success: function(res) {
                     if (res.code) {
+                      var newsscc=that.data.sscc-1;
                       //发起网络请求
                       wx.request({
                         url: 'https://blog.iswtf.com/xcxrequestinfoqx.php',
@@ -327,7 +330,8 @@ Page({
 
                                     that.setData({
                                       srcsc:'收藏',
-                                      srcsimg:'/screenshots/user_star.png'
+                                      srcsimg:'/screenshots/user_star.png',
+                                      sscc:newsscc
                                     })
                         }
                       })
@@ -351,6 +355,7 @@ Page({
       wx.login({
         success: function(res) {
           if (res.code) {
+            var newsscc=that.data.sscc+1;
             //发起网络请求
             wx.request({
               url: 'https://blog.iswtf.com/xcxrequestinfo.php',
@@ -370,8 +375,9 @@ Page({
                         })
 
                           that.setData({
-                            srcsc:'已收藏',
-                            srcsimg:'/screenshots/star_989.png'
+                            srcsc:'取消收藏',
+                            srcsimg:'/screenshots/star_989.png',
+                            sscc:newsscc
                           })
               }
             })
