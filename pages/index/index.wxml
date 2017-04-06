@@ -1,0 +1,28 @@
+<!--index.wxml-->
+
+
+<view class="btn-area">
+  
+  <view class="btn-areaff" bindtap="onShouc"><image src="{{srcsimg}}" style="width:20px;height:20px;vertical-align:bottom;"></image><text>{{srcsc}}</text></view>
+  <view class="btn-areaff" style="background:#f7f7f7;" bindtap="wdall"><image src="{{wdsrc}}" style="width:20px;height:20px;vertical-align:bottom;"></image><text>{{wd}}</text></view>
+</view>
+
+
+
+<view class="title">
+  <icon type="waiting" size="30" class="icmm nnnssf{{imgcss}}" />
+  <icon type="waiting_circle" size="20" class="icmm nnnssf{{imgcss}}" />
+  <text class="titlesize">{{title}}</text>
+  <icon type="success" size="20" class="icmm nnnss{{imgcss}}" />
+  <icon type="download" size="30" class="icmm nnnss{{imgcss}}" />
+
+  <view style="text-align: center;margin-top:20px;"  bindlongtap = "onlongclick">
+    <image mode="widthFix" style="width:100%;" class="nnnss{{imgcss}}" src="{{src}}" bindload="imgload" binderror="imgerror"></image>
+  </view>
+
+  <modal title="是否保存图片？" confirm-text="保存" cancel-text="取消" data-url="https://blog.iswtf.com/xcxrequest.php?dimg={{src}}" 
+      hidden="{{modalHidden}}" bindconfirm="onSaveClick" bindcancel="onCancelClick">
+  </modal>
+  <view class="tttip nnnss{{imgcss}}"><image src="/screenshots/tip.png" style="width:16px;height:16px;vertical-align:bottom;"></image>长按操作图片</view>
+  <view style="color:#fff;">iswtf.com</view>
+</view>

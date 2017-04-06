@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "isWTF.com",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true
+  },
+  "debug": false
+}
