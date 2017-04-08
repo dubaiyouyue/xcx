@@ -303,10 +303,17 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
                                     imgloadiilok:1
                                 })
 
+                                    var ccsssdd='删除失败';
+                                    var sssccddimg='/screenshots/fail.png';
+
+                                if(that.data.pid>0){
+                                      ccsssdd='删除成功';
+                                      sssccddimg='/screenshots/Success.png';
+                                }
                                 wx.showToast({
-                                    title: '删除成功',
+                                    title: ccsssdd,
                                     mask:"true",
-                                    image:"/screenshots/Success.png",
+                                    image:sssccddimg,
                                     duration: 2000
                                 })
                                 var t=setTimeout(function(){that.setData(res.data)},1800)
