@@ -91,10 +91,12 @@ Page({
   },
 
   imgload:function(){
-      if(!this.data.imgloadiilok) wx.hideLoading()
+      
     this.setData({
       imgcss:'1'
     })
+    //if(!this.data.imgloadiilok) 
+    wx.hideLoading()
   },
 
 
@@ -138,15 +140,27 @@ Page({
               duration: 360000
             })
 
-            wx.login({
+
+
+
+var kkknew=-1;
+var sssccggg=0;
+var sssccgggsb=0;
+var actionsatusid=0;
+for (var k = 0, length = tempFilePaths.length; k < length; k++) {
+
+
+
+            var newimgpuup=wx.login({
                 success: function(res) {
                   //console.log('fdasfdas222222')
                   if (res.code) {
                     //console.log('fdasfdas111111')
                     var codeuup=res.code;
+                    kkknew++;
                     wx.uploadFile({
                       url: 'https://blog.iswtf.com/xcxrequestup.php?code='+codeuup, //仅为示例，非真实的接口地址
-                      filePath: tempFilePaths[0],
+                      filePath: tempFilePaths[kkknew],
                       name: 'file',
                       header: {
                           'content-type': 'application/json'
@@ -154,16 +168,20 @@ Page({
                       success: function(resuup){
                         resuup.data=JSON.parse(resuup.data); 
                         var actionsatus = resuup.data.actionsatus;
-                        var actionsatusid=resuup.data.actionsatusid;
+                         actionsatusid=resuup.data.actionsatusid;
                         //console.log(resuup.data.actionsatusid);
                         if(actionsatus=='ok' && actionsatusid){
-                            wx.showToast({
-                              title: '上传成功',
-                              mask:"true",
-                              image:"/screenshots/Success.png",
-                              duration: 2000
-                            })
-                              that.wdsupimg(actionsatusid);
+                          sssccggg++;
+                              if(k==length && k){
+                                  wx.showToast({
+                                      title: '上传 '+sssccggg+'张',//失败'+(length-sssccggg)+'张',
+                                      mask:"true",
+                                      image:"/screenshots/Success.png",
+                                      duration: 2500
+                                    })
+                                that.wdsupimg(actionsatusid);
+                              }
+                              else newimgpuup;
                         }
 
                           //console.log(resuup.data.actionsatusid);
@@ -176,6 +194,7 @@ Page({
                     })
                   }
                 }})
+    }
         }
       })
     },
@@ -287,11 +306,11 @@ Page({
                                 wx.showToast({
                                     title: '删除成功',
                                     mask:"true",
-                                    icon:"loading",
+                                    image:"/screenshots/Success.png",
                                     duration: 2000
                                 })
+                                var t=setTimeout(function(){that.setData(res.data)},1800)
                                 
-                                that.setData(res.data)
                                 that.setData({
                                     imgloadiilok:''
                                 })

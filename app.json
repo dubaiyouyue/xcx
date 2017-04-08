@@ -1,7 +1,7 @@
 {
   "pages":[
-    "wd/wd/wd",
-    "pages/index/index"
+    "pages/index/index",
+    "wd/wd/wd"
     
   ],
   "window":{

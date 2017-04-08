@@ -487,16 +487,27 @@ Page({
               icon:"loading",
               duration: 3600000
             })
+           
+var kkknew=-1;
+var sssccggg=0;
+var sssccgggsb=0;
+var actionsatusid=0;
+for (var k = 0, length = tempFilePaths.length; k < length; k++) {
 
-            wx.login({
+
+
+
+            var newimgpuup=wx.login({
                 success: function(res) {
-                  //console.log('fdasfdas222222')
+                  //console.log(tempFilePaths.length);
+                  //return false;
                   if (res.code) {
                     //console.log('fdasfdas111111')
                     var codeuup=res.code;
+                    kkknew++;
                     wx.uploadFile({
                       url: 'https://blog.iswtf.com/xcxrequestup.php?code='+codeuup, //仅为示例，非真实的接口地址
-                      filePath: tempFilePaths[0],
+                      filePath: tempFilePaths[kkknew],
                       name: 'file',
                       header: {
                           'content-type': 'application/json'
@@ -504,28 +515,41 @@ Page({
                       success: function(resuup){
                         resuup.data=JSON.parse(resuup.data); 
                         var actionsatus = resuup.data.actionsatus;
-                        var actionsatusid=resuup.data.actionsatusid;
+                        actionsatusid=resuup.data.actionsatusid;
                         //console.log(resuup.data.actionsatusid);
                         if(actionsatus=='ok' && actionsatusid){
-                            wx.showToast({
-                              title: '上传成功',
-                              mask:"true",
-                              image:"/screenshots/Success.png",
-                              duration: 2000
-                            })
-                              that.wdsupimg(actionsatusid);
+                          sssccggg++;
+                              if(k==length && k){
+                                  wx.showToast({
+                                      title: '上传 '+sssccggg+'张',//失败'+(length-sssccggg)+'张',
+                                      mask:"true",
+                                      image:"/screenshots/Success.png",
+                                      duration: 2500
+                                    })
+                                that.wdsupimg(actionsatusid);
+                              }
+                              else newimgpuup;
                         }
-
+                          //sssccggg++;
                           //console.log(resuup.data.actionsatusid);
                         //do something
                           //that.wdsupimg(codeuup);
-                      }/*,
-                      complete:function(resuup){
-                        console.log(resuup.data.actionsatusid);
-                      }*/
+                      },fail: () => {
+                        sssccgggsb++;
+                        //console.log(tempFilePaths[kkknew]);
+                    },
+                    complete:()=>{
+                          
+                              //console.log(tempFilePaths[k]);
+
+                    }
                     })
                   }
                 }})
+                
+
+}
+
         }
       })
     },
@@ -566,7 +590,7 @@ Page({
                           },
                           success: function(res) {
                             //res.data=JSON.parse(res.data);
-                            console.log(res.data)
+                            //console.log(res.data)
                             that.setData({
                               src:res.data.src,
                               textsrc:res.data.textsrc
