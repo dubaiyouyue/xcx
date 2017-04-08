@@ -340,5 +340,35 @@ Page({
 
 
   },
+  //我的最新
+  wdoo:function(){
+    wx.showToast({
+        title: '正在加载...',
+        mask:"true",
+        icon:"loading",
+        duration: 180000
+    })
+    var that = this;
+     wx.login({
+        success: function(res) {
+          if (res.code) {
+            wx.request({
+            url: 'https://blog.iswtf.com/xcxrequestwd.php',
+              data: {
+                code: res.code,
+                wdid:1
+              },
+              header: {
+                  'content-type': 'application/json'
+              },
+              success: function(res) {
+             
+                that.setData(res.data)
+        
+              }
+            })
+          }
+        }})
+  }
 
 })

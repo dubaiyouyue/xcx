@@ -1,6 +1,6 @@
 <view class="btn-area">
   
-  <view class="btn-areaff"><image src="/screenshots/My_Images.png" style="width:20px;height:20px;vertical-align:bottom;"></image><text>我的</text></view>
+  <view class="btn-areaff" bindtap="wdoo"><image src="/screenshots/My_Images.png" style="width:20px;height:20px;vertical-align:bottom;"></image><text>我的</text></view>
   <view class="btn-areaff" style="background:#f7f7f7;" bindtap="shouye"><image src="/screenshots/menu.png" style="width:20px;height:20px;vertical-align:bottom;"></image><text>首页</text></view>
 </view>
 <view class="title">
