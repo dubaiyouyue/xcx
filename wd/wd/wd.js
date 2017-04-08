@@ -1,7 +1,8 @@
 //index.js
 Page({
   data: {
-        wdkkgg:0
+        wdkkgg:0,
+        imgloadiilok:''
 
   },
   onLoad: function(options) {
@@ -90,7 +91,7 @@ Page({
   },
 
   imgload:function(){
-      wx.hideLoading()
+      if(!this.data.imgloadiilok) wx.hideLoading()
     this.setData({
       imgcss:'1'
     })
@@ -205,7 +206,8 @@ Page({
                             data: {
                               code: res.code,
                               wdid:wdid
-                              /*wdm:that.data.wdm,
+                              /*pid:wdid
+                              wdm:that.data.wdm,
                               pid:that.data.pid,
                               sssjjjjsrc:that.data.src,
                               sssjjjj:that.data.sssjjjj*/
@@ -220,7 +222,8 @@ Page({
                             that.setData({
                               src:res.data.src,
                               textsrc:res.data.textsrc,
-                              wdkkgg:newwdkkgg
+                              wdkkgg:newwdkkgg,
+                              pid:wdid
                             })
 
  /*titlehh:'我的上传/',
@@ -249,7 +252,7 @@ Page({
     deletes:function(){
 
         var that = this;
-        if(that.data.fdassssddd==1) return false;
+        if(!that.data.wdkkgg) return false;
         wx.showModal({
             title: '提示',
             content: '确定删除照片吗？',
@@ -277,6 +280,10 @@ Page({
                                 'content-type': 'application/json'
                             },
                             success: function(res) {
+                                that.setData({
+                                    imgloadiilok:1
+                                })
+
                                 wx.showToast({
                                     title: '删除成功',
                                     mask:"true",
@@ -285,7 +292,9 @@ Page({
                                 })
                                 
                                 that.setData(res.data)
-                        
+                                that.setData({
+                                    imgloadiilok:''
+                                })
                             }
                             })
                         }
