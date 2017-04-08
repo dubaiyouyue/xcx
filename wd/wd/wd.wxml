@@ -1,0 +1,16 @@
+<view class="btn-area">
+  
+  <view class="btn-areaff"><image src="/screenshots/My_Images.png" style="width:20px;height:20px;vertical-align:bottom;"></image><text>我的</text></view>
+  <view class="btn-areaff" style="background:#f7f7f7;" bindtap="shouye"><image src="/screenshots/menu.png" style="width:20px;height:20px;vertical-align:bottom;"></image><text>首页</text></view>
+</view>
+<view class="title">
+  <view style="text-align: center;margin-top:20px;"  bindlongtap = "onlongclick">
+    <image mode="widthFix" style="width:100%;" class="nnnss{{imgcss}}" src="{{src}}" bindload="imgload" binderror="imgerror"></image>
+  </view>
+
+  <view class="tttip" style="margin-top:20px;"><image src="/screenshots/tip.png" style="width:16px;height:16px;vertical-align:bottom;"></image>长按操作图片<image src="/screenshots/Upload.png" style="width:16px;height:16px;margin-left:6px;vertical-align:bottom;"></image><text bindtap="upimg">上传图片</text> 
+  <image src="/screenshots/delete.png" style="width:16px;height:16px;vertical-align:bottom;margin-left:6px;"></image><text bindtap="deletes">删除</text>
+  </view>
+    <view class="tttip">我上传 {{wdkkgg}}张图片</view>
+  <view style="color:#fff;margin-top:20px;">iswtf.com</view>
+  </view>

@@ -7,8 +7,8 @@ Page({
     modalHidden: true,
     srcsc:'收藏',
     srcsimg:'/screenshots/user_star.png',
-    wd:'全部',
-    wdsrc:'/screenshots/clear_all.png',
+    wd:'我的',
+    wdsrc:'/screenshots/user_collection.png',
     wdm:'',
     pid:'',
     sssjjjjsrc:'',
@@ -296,14 +296,14 @@ Page({
     //收藏
     onShouc:function(){
        var that=this;
-       if(this.data.srcsc=='已收藏') return false;
+       if(this.data.srcsc=='已收藏' || this.data.srcsc=='暂无收藏') return false;
       if(this.data.srcsc=='取消收藏') {
           //return false;
             wx.showToast({
               title: '正在取消...',
               mask:"true",
               icon:"loading",
-              duration: 200000
+              duration: 120000
             })
 
                 wx.login({
@@ -319,8 +319,20 @@ Page({
                           sssjjjjsrc:that.data.src,
                           sssjjjj:that.data.sssjjjj
                         },
+                        header: {
+                            'content-type': 'application/json'
+                        },
                         success: function(resddd) {
                           //console.log(resddd.data)
+                          if(resddd.data.actionsatus!='ok'){
+                                  wx.showToast({
+                                    title: '取消失败',
+                                    mask:"true",
+                                    image:"/screenshots/fail.png",
+                                    duration: 3000
+                                  })
+                              return false;
+                          }
                                   wx.showToast({
                                     title: '取消成功',
                                     mask:"true",
@@ -349,7 +361,7 @@ Page({
               title: '正在收藏...',
               mask:"true",
               icon:"loading",
-              duration: 200000
+              duration: 120000
             })
 
       wx.login({
@@ -365,8 +377,20 @@ Page({
                 sssjjjjsrc:that.data.src,
                 sssjjjj:that.data.sssjjjj
               },
+                header: {
+                    'content-type': 'application/json'
+                },
               success: function(resddd) {
-                //console.log(resddd.data)
+                //console.log(resddd.data.actionsatus)
+                        if(resddd.data.actionsatus!='ok'){
+                            wx.showToast({
+                              title: '收藏失败',
+                              mask:"true",
+                              image:"/screenshots/fail.png",
+                              duration: 3000
+                            })
+                            return false;
+                        }
                         wx.showToast({
                           title: '收藏成功',
                           mask:"true",
@@ -393,13 +417,13 @@ Page({
         var wdold=this.data.wd;
         var wdoldt=this.data.wdsrc;
         var wdoldm=this.data.wdm;
-          var wd='我的';
-          var wdsrc='/screenshots/user_collection.png';
+          var wd='全部';
+          var wdsrc='/screenshots/clear_all.png';
           var wdm='1';
 
         if(wdoldm){
-          wd='全部';
-          wdsrc='/screenshots/clear_all.png';
+          wd='我的';
+          wdsrc='/screenshots/user_collection.png';
           wdm='';
         }
           this.setData({
@@ -444,9 +468,128 @@ Page({
         }})
 
 
+    },
+    //上传
+    upimg:function(){
+
+
+
+      var that=this;
+
+
+      wx.chooseImage({
+        success: function(res) {
+          var tempFilePaths = res.tempFilePaths;
+
+            wx.showToast({
+              title: '正在上传...',
+              mask:"true",
+              icon:"loading",
+              duration: 3600000
+            })
+
+            wx.login({
+                success: function(res) {
+                  //console.log('fdasfdas222222')
+                  if (res.code) {
+                    //console.log('fdasfdas111111')
+                    var codeuup=res.code;
+                    wx.uploadFile({
+                      url: 'https://blog.iswtf.com/xcxrequestup.php?code='+codeuup, //仅为示例，非真实的接口地址
+                      filePath: tempFilePaths[0],
+                      name: 'file',
+                      header: {
+                          'content-type': 'application/json'
+                      },
+                      success: function(resuup){
+                        resuup.data=JSON.parse(resuup.data); 
+                        var actionsatus = resuup.data.actionsatus;
+                        var actionsatusid=resuup.data.actionsatusid;
+                        //console.log(resuup.data.actionsatusid);
+                        if(actionsatus=='ok' && actionsatusid){
+                            wx.showToast({
+                              title: '上传成功',
+                              mask:"true",
+                              image:"/screenshots/Success.png",
+                              duration: 2000
+                            })
+                              that.wdsupimg(actionsatusid);
+                        }
+
+                          //console.log(resuup.data.actionsatusid);
+                        //do something
+                          //that.wdsupimg(codeuup);
+                      }/*,
+                      complete:function(resuup){
+                        console.log(resuup.data.actionsatusid);
+                      }*/
+                    })
+                  }
+                }})
+        }
+      })
+    },
+    //我的上传
+
+    wdssswd:function(){
+        wx.redirectTo({
+          url: '/wd/wd/wd'
+        })
+        return false;
+    },
+    
+    wdsupimg:function(wdid){
+
+
+
+
+           var that=this;
+            wx.login({
+                success: function(res) {
+                  //console.log('fdasfdas222222')
+                  if (res.code) {
+
+
+     
+                        wx.request({
+                          url: 'https://blog.iswtf.com/xcxrequestwd.php',
+                            data: {
+                              code: res.code,
+                              wdid:wdid
+                              /*wdm:that.data.wdm,
+                              pid:that.data.pid,
+                              sssjjjjsrc:that.data.src,
+                              sssjjjj:that.data.sssjjjj*/
+                            },
+                          header: {
+                              'content-type': 'application/json'
+                          },
+                          success: function(res) {
+                            //res.data=JSON.parse(res.data);
+                            console.log(res.data)
+                            that.setData({
+                              src:res.data.src,
+                              textsrc:res.data.textsrc
+                             
+                            })
+
+ /*titlehh:'我的上传/',
+                              wd:'全部',
+                              wdsrc:'/screenshots/clear_all.png'*/
+
+                        /*this.setData({
+                          title:'正在加载...'
+                        })*/
+                          }
+                        })
+                  }
+                }})
+
+
     }
 
-
+                  
+         
 
 
 

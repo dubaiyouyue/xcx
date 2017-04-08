@@ -12,7 +12,7 @@
 <view class="title">
   <icon type="waiting" size="30" class="icmm nnnssf{{imgcss}}" />
   <icon type="waiting_circle" size="20" class="icmm nnnssf{{imgcss}}" />
-  <text class="titlesize">{{title}}</text>
+  <text class="titlesize">{{titlehh}}{{title}}</text>
   <icon type="success" size="20" class="icmm nnnss{{imgcss}}" />
   <icon type="download" size="30" class="icmm nnnss{{imgcss}}" />
 
@@ -23,7 +23,9 @@
   <modal title="是否保存图片？" confirm-text="保存" cancel-text="取消" data-url="https://blog.iswtf.com/xcxrequest.php?dimg={{src}}" 
       hidden="{{modalHidden}}" bindconfirm="onSaveClick" bindcancel="onCancelClick">
   </modal>
-  <view class="tttip nnnss{{imgcss}}" style="margin-top:20px;"><image src="/screenshots/tip.png" style="width:16px;height:16px;vertical-align:bottom;"></image>长按操作图片</view>
+  <view class="tttip nnnss{{imgcss}}" style="margin-top:20px;"><image src="/screenshots/tip.png" style="width:16px;height:16px;vertical-align:bottom;"></image>长按操作图片<image src="/screenshots/Upload.png" style="width:16px;height:16px;margin-left:6px;vertical-align:bottom;"></image><text bindtap="upimg">上传图片</text> 
+  <image src="/screenshots/My_Images.png" style="width:16px;height:16px;vertical-align:bottom;margin-left:6px;"></image><text bindtap="wdssswd">我的上传</text>
+  </view>
   <view class="tttip nnnss{{imgcss}}">看过{{kkgg}} 收藏{{sscc}}</view>
   <view style="color:#fff;margin-top:20px;">iswtf.com</view>
 </view>
