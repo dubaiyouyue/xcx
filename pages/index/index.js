@@ -6,9 +6,9 @@ Page({
     imgcss:'',
     modalHidden: true,
     srcsc:'收藏',
-    srcsimg:'/screenshots/user_star.png',
+    srcsimg:'/screenshots/user_star.png?1',
     wd:'我的',
-    wdsrc:'/screenshots/user_collection.png',
+    wdsrc:'/screenshots/user_collection.png?1',
     wdm:'',
     pid:'',
     sssjjjjsrc:'',
@@ -16,7 +16,8 @@ Page({
     kkgg:'0',
     sscc:'0',
     wdkkgg:'0',
-    bzkhkcss:'1'
+    bzkhkcss:'1',
+    ssccccsokkkk:'0'
 
   },
   onLoad: function(options) {
@@ -221,6 +222,14 @@ Page({
   },
   //不再看
   bzkhk:function(){
+
+      wx.showToast({
+          title: '正在获取...',
+          mask:"true",
+          icon:"loading",
+          duration: 180000
+      })
+
     /*this.setData({
       title:'正在加载...'
     })*/
@@ -240,11 +249,68 @@ Page({
         srcshang:newsrcshang,
         textsrcshang:newtextsrcshang
       })
-    /*if(that.data.pid==that.data.scpid){
 
-    }*/
 
-      //console.log(that.data);
+        /*var Cts = that.data.scpid;
+        var ctsssok=0;
+        if(Cts.indexOf('-'+that.data.pid) >= 0 ) { 
+            ctsssok=1;
+        } 
+    var sfzsccccn=(that.data.scpid).indexOf(that.data.pid);*/
+
+        /*var myscpid=(that.data.scpid).split("#");
+        if (!Array.indexOf) {  
+            Array.prototype.indexOf = function (obj) {  
+                for (var i = 0; i < this.length; i++) {  
+                    if (this[i] == obj) {  
+                        return i;  
+                    }  
+                }  
+                return -1;  
+            }  
+        }  
+        var indexscc = myscpid.indexOf(that.data.pid);//为index赋值为0 */
+
+     wx.login({
+        success: function(res) {
+          if (res.code) {
+            wx.request({
+                    url: 'https://blog.iswtf.com/xcxrequestkg.php',
+                      data: {
+                        code: res.code,
+                        wdid:that.data.pid
+                      },
+              header: {
+                  'content-type': 'application/json'
+              },
+              success: function(res) {
+                //console.log(123)
+                //that.setData(res.data)
+                /*that.setData({
+                  ssccccsokkkk:res.data.ssccccsokkkk
+                })*/
+                        if(res.data.ssccccsokkkk){
+                            that.setData({
+                              srcsc:'取消收藏',
+                              srcsimg:'/screenshots/star_989.png?1'
+                            })
+                        }else{
+                            that.setData({
+                              srcsc:'收藏',
+                              srcsimg:'/screenshots/user_star.png?1'
+                            })
+                        }
+                      wx.hideLoading()
+              }
+            })
+          }
+        }})
+
+
+    
+
+
+      console.log(that.data);
     }
   },
     // 长按
@@ -272,7 +338,7 @@ Page({
             wx.showToast({
               title: '保存失败！',
               mask:"true",
-              image:"/screenshots/fail.png",
+              image:"/screenshots/fail.png?1",
               duration: 2000
             })
             return false;
@@ -303,7 +369,7 @@ Page({
                         wx.showToast({
                           title: '保存成功',
                           mask:"true",
-                          image:"/screenshots/Success.png",
+                          image:"/screenshots/Success.png?1",
                           duration: 2000
                         })
 
@@ -322,7 +388,7 @@ Page({
                   wx.showToast({
                     title: '保存失败！',
                     mask:"true",
-                    image:"/screenshots/fail.png",
+                    image:"/screenshots/fail.png?1",
                     duration: 2000
                   })
               },
@@ -373,7 +439,7 @@ Page({
                                   wx.showToast({
                                     title: '取消失败',
                                     mask:"true",
-                                    image:"/screenshots/fail.png",
+                                    image:"/screenshots/fail.png?1",
                                     duration: 3000
                                   })
                               return false;
@@ -381,15 +447,14 @@ Page({
                                   wx.showToast({
                                     title: '取消成功',
                                     mask:"true",
-                                    image:"/screenshots/Success.png",
+                                    image:"/screenshots/Success.png?1",
                                     duration: 2000
                                   })
 
                                     that.setData({
                                       srcsc:'收藏',
-                                      srcsimg:'/screenshots/user_star.png',
-                                      sscc:newsscc,
-                                      scpid:0
+                                      srcsimg:'/screenshots/user_star.png?1',
+                                      sscc:newsscc
                                     })
                         }
                       })
@@ -432,7 +497,7 @@ Page({
                             wx.showToast({
                               title: '收藏失败',
                               mask:"true",
-                              image:"/screenshots/fail.png",
+                              image:"/screenshots/fail.png?1",
                               duration: 3000
                             })
                             return false;
@@ -440,15 +505,26 @@ Page({
                         wx.showToast({
                           title: '收藏成功',
                           mask:"true",
-                          image:"/screenshots/Success.png",
+                          image:"/screenshots/Success.png?1",
                           duration: 2000
                         })
-
+                                  /*if((that.data.scpid).length > 0) var asc = that.data.scpid;//[];// 创建数组
+                                  else var asc=[];
+                                  //asc[0]=0;
+                                  asc.push(that.data.pid);
+                                  //asc.push(that.data.bzkhkshang);
+                                  //asc =asc.join("-");*/
+                                  /*var nnewwsscc=that.data.scpid;
+                                  if(nnewwsscc) nnewwsscc=nnewwsscc+that.data.pid+'#';
+                                  else nnewwsscc='#'+that.data.pid+'#';
+                                    ,
+                                    scpid:nnewwsscc
+                                  
+                                  */
                           that.setData({
                             srcsc:'取消收藏',
-                            srcsimg:'/screenshots/star_989.png',
-                            sscc:newsscc,
-                            scpid:that.data.pid
+                            srcsimg:'/screenshots/star_989.png?2',
+                            sscc:newsscc
                           })
               }
             })
@@ -466,7 +542,7 @@ Page({
         if(!this.data.sscc && !this.data.wdm){
             wx.showToast({
               title: '没有收藏图片',
-              image: '/screenshots/fail.png',
+              image: '/screenshots/fail.png?1',
               duration: 2000
             })
             return false;
@@ -476,13 +552,18 @@ Page({
         var wdoldt=this.data.wdsrc;
         var wdoldm=this.data.wdm;
           var wd='全部';
-          var wdsrc='/screenshots/clear_all.png';
+          var wdsrc='/screenshots/clear_all.png?1';
           var wdm='1';
 
         if(wdoldm){
           wd='我的';
-          wdsrc='/screenshots/user_collection.png';
+          wdsrc='/screenshots/user_collection.png?1';
           wdm='';
+        }else{
+              wx.redirectTo({
+                url: '/wdsc/index/index?wdfirst=ok'
+              })
+              return false;
         }
           this.setData({
             wd:wd,
@@ -582,7 +663,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
                                   wx.showToast({
                                       title: '上传 '+sssccggg+'张',//失败'+(length-sssccggg)+'张',
                                       mask:"true",
-                                      image:"/screenshots/Success.png",
+                                      image:"/screenshots/Success.png?1",
                                       duration: 2500
                                     })
                                 that.wdsupimg(actionsatusid);
@@ -619,7 +700,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
         if(!this.data.wdkkgg){
             wx.showToast({
               title: '暂无上传照片',
-              image: '/screenshots/fail.png',
+              image: '/screenshots/fail.png?3',
               duration: 2000
             })
             return false;

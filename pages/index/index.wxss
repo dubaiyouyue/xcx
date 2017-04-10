@@ -34,3 +34,8 @@ margin: 12px;
 .bzkhkcss{
   text-decoration: underline;
 }
+.bzkhkcssnnn1{display:none;}
+.fontcolor{
+  color: lightseagreen;
+  font-weight: bold;
+}
