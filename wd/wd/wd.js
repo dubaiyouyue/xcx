@@ -121,8 +121,8 @@ Page({
         })
         return false;
     },
-    //上传
-    upimg:function(){
+//上传
+upimg:function(){
 
 
 
@@ -176,7 +176,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
                                   wx.showToast({
                                       title: '上传 '+sssccggg+'张',//失败'+(length-sssccggg)+'张',
                                       mask:"true",
-                                      image:"/screenshots/Success.png",
+                                      image:"/screenshots/Success.png?1",
                                       duration: 2500
                                     })
                                 that.wdsupimg(actionsatusid);
@@ -274,7 +274,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
         if(!that.data.wdkkgg){
             wx.showToast({
               title: '暂无上传照片',
-              image: '/screenshots/fail.png',
+              image: '/screenshots/fail.png?1',
               duration: 2000
             })
             return false;
@@ -311,11 +311,11 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
                                 })
 
                                     var ccsssdd='删除失败';
-                                    var sssccddimg='/screenshots/fail.png';
+                                    var sssccddimg='/screenshots/fail.png?1';
 
                                 if(that.data.pid>0){
                                       ccsssdd='删除成功';
-                                      sssccddimg='/screenshots/Success.png';
+                                      sssccddimg='/screenshots/Success.png?1';
                                 }
                                 wx.showToast({
                                     title: ccsssdd,
@@ -387,7 +387,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
         if(!this.data.wdkkgg){
             wx.showToast({
               title: '暂无上传照片',
-              image: '/screenshots/fail.png',
+              image: '/screenshots/fail.png?1',
               duration: 2000
             })
             return false;

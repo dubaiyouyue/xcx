@@ -1,0 +1,41 @@
+/**index.wxss**/
+.title{
+text-align: center;
+margin: 12px;
+}
+.titlesize{
+  font-size:12px;
+  color:green;
+}
+.nnnss,.nnnssf1{
+  display: none;
+}
+.icmm{
+  vertical-align:middle;
+}
+.tttip{
+  text-align:right;
+  color:#999;
+  font-size:12px;
+  margin-top:6px;
+}
+.btn-area .btn-areaff{
+  float: left;
+  width: 50%;
+  text-align: center;
+  margin: 20px 0px;
+  background: #f3f3f3;
+  padding: 20px 0;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+  margin-top:0px;
+}
+.bzkhkcss{
+  text-decoration: underline;
+}
+.bzkhkcssnnn1{display:none;}
+.fontcolor{
+  color: lightseagreen;
+  font-weight: bold;
+}
