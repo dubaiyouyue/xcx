@@ -172,6 +172,15 @@ Page({
     })
   },
   imgerror:function(){
+
+
+    this.setData({
+      title:'图片已被删除！',
+      src:'/screenshots/timg.jpg',
+      textsrc:'/screenshots/timg.jpg'
+    })
+    return false;
+
     this.setData({
       title:'加载失败！'
     })
