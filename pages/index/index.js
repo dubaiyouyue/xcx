@@ -415,6 +415,17 @@ Page({
     },
     //我的
     wdall:function(){
+
+
+        if(!this.data.sscc && !this.data.wdm){
+            wx.showToast({
+              title: '没有收藏图片',
+              image: '/screenshots/fail.png',
+              duration: 2000
+            })
+            return false;
+        }
+
         var wdold=this.data.wd;
         var wdoldt=this.data.wdsrc;
         var wdoldm=this.data.wdm;
@@ -557,6 +568,16 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
     //我的上传
 
     wdssswd:function(){
+
+        if(!this.data.wdkkgg){
+            wx.showToast({
+              title: '暂无上传照片',
+              image: '/screenshots/fail.png',
+              duration: 2000
+            })
+            return false;
+        }
+
         wx.redirectTo({
           url: '/wd/wd/wd'
         })

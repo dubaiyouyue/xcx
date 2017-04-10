@@ -271,10 +271,17 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
     deletes:function(){
 
         var that = this;
-        if(!that.data.wdkkgg) return false;
+        if(!that.data.wdkkgg){
+            wx.showToast({
+              title: '暂无上传照片',
+              image: '/screenshots/fail.png',
+              duration: 2000
+            })
+            return false;
+        }
         wx.showModal({
             title: '提示',
-            content: '确定删除这张照片吗？',
+            content: '确定要删除这张照片吗？',
             success: function(res) {
                 if (res.confirm) {
                     //console.log('确定')
@@ -377,6 +384,15 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
   },
   //我的最新
   wdoo:function(){
+        if(!this.data.wdkkgg){
+            wx.showToast({
+              title: '暂无上传照片',
+              image: '/screenshots/fail.png',
+              duration: 2000
+            })
+            return false;
+        }
+
     wx.showToast({
         title: '正在加载...',
         mask:"true",
