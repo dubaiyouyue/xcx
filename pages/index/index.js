@@ -15,7 +15,8 @@ Page({
     sssjjjj:'',
     kkgg:'0',
     sscc:'0',
-    wdkkgg:'0'
+    wdkkgg:'0',
+    bzkhkcss:'1'
 
   },
   onLoad: function(options) {
@@ -81,6 +82,15 @@ Page({
     })
     var that = this;
 
+        if(!that.data.wdm){
+          that.setData({
+            bzkhkshang:that.data.pid,
+            srcshang:that.data.src,
+            textsrcshang:that.data.textsrc
+          })
+        }
+
+
 
      wx.login({
         success: function(res) {
@@ -99,7 +109,13 @@ Page({
               },
               success: function(res) {
                 //console.log(123)
+                
+                  that.setData({
+                    bzkhkcss:that.data.wdm
+                  })
+                
                 that.setData(res.data)
+                
             /*this.setData({
               title:'正在加载...'
             })*/
@@ -202,6 +218,34 @@ Page({
 
 
 
+  },
+  //不再看
+  bzkhk:function(){
+    /*this.setData({
+      title:'正在加载...'
+    })*/
+    var that = this;
+    var newbzkhkshang=that.data.pid;
+    var newsrcshang=that.data.src;
+    var newtextsrcshang=that.data.textsrc;
+    
+
+
+    if(!that.data.bzkhkcss){
+      that.setData({
+        pid:that.data.bzkhkshang,
+        src:that.data.srcshang,
+        textsrc:that.data.textsrcshang,
+        bzkhkshang:newbzkhkshang,
+        srcshang:newsrcshang,
+        textsrcshang:newtextsrcshang
+      })
+    /*if(that.data.pid==that.data.scpid){
+
+    }*/
+
+      //console.log(that.data);
+    }
   },
     // 长按
     onlongclick: function() {
@@ -344,7 +388,8 @@ Page({
                                     that.setData({
                                       srcsc:'收藏',
                                       srcsimg:'/screenshots/user_star.png',
-                                      sscc:newsscc
+                                      sscc:newsscc,
+                                      scpid:0
                                     })
                         }
                       })
@@ -402,7 +447,8 @@ Page({
                           that.setData({
                             srcsc:'取消收藏',
                             srcsimg:'/screenshots/star_989.png',
-                            sscc:newsscc
+                            sscc:newsscc,
+                            scpid:that.data.pid
                           })
               }
             })
@@ -441,7 +487,8 @@ Page({
           this.setData({
             wd:wd,
             wdsrc:wdsrc,
-            wdm:wdm
+            wdm:wdm,
+            bzkhkcss:wdm
           })
 
 

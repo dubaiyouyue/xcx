@@ -26,6 +26,6 @@
   <view class="tttip nnnss{{imgcss}}" style="margin-top:20px;"><image src="/screenshots/tip.png" style="width:16px;height:16px;vertical-align:bottom;"></image>长按操作图片<image src="/screenshots/Upload.png" style="width:16px;height:16px;margin-left:6px;vertical-align:bottom;"></image><text bindtap="upimg" style="text-decoration: underline;">上传图片</text> 
   <image src="/screenshots/My_Images.png" style="width:16px;height:16px;vertical-align:bottom;margin-left:6px;"></image><text bindtap="wdssswd" style="text-decoration: underline;">我的上传</text>
   </view>
-  <view class="tttip nnnss{{imgcss}}">不再看{{kkgg}} 收藏{{sscc}} 我上传{{wdkkgg}}（仅自己可见）</view>
+  <view class="tttip nnnss{{imgcss}}"><text bindtap="bzkhk" class="bzkhkcss{{bzkhkcss}}">不再看</text>{{kkgg}} 收藏{{sscc}} 我上传{{wdkkgg}}（仅自己可见）</view>
   <view style="color:#fff;margin-top:20px;">iswtf.com</view>
 </view>
