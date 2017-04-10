@@ -338,7 +338,7 @@ Page({
             wx.showToast({
               title: '保存失败！',
               mask:"true",
-              image:"/screenshots/fail.png?1",
+              image:"/screenshots/fail.png?3",
               duration: 2000
             })
             return false;
@@ -388,7 +388,7 @@ Page({
                   wx.showToast({
                     title: '保存失败！',
                     mask:"true",
-                    image:"/screenshots/fail.png?1",
+                    image:"/screenshots/fail.png?3",
                     duration: 2000
                   })
               },
@@ -439,7 +439,7 @@ Page({
                                   wx.showToast({
                                     title: '取消失败',
                                     mask:"true",
-                                    image:"/screenshots/fail.png?1",
+                                    image:"/screenshots/fail.png?3",
                                     duration: 3000
                                   })
                               return false;
@@ -497,7 +497,7 @@ Page({
                             wx.showToast({
                               title: '收藏失败',
                               mask:"true",
-                              image:"/screenshots/fail.png?1",
+                              image:"/screenshots/fail.png?3",
                               duration: 3000
                             })
                             return false;
@@ -542,7 +542,7 @@ Page({
         if(!this.data.sscc && !this.data.wdm){
             wx.showToast({
               title: '没有收藏图片',
-              image: '/screenshots/fail.png?1',
+              image: '/screenshots/fail.png?3',
               duration: 2000
             })
             return false;
