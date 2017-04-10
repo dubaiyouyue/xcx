@@ -706,7 +706,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
         }
 
         wx.redirectTo({
-          url: '/wd/wd/wd'
+          url: '/wd/wd/wd?wdid=1'
         })
         return false;
     },

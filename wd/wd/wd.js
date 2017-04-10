@@ -22,7 +22,8 @@ Page({
             wx.request({
             url: 'https://blog.iswtf.com/xcxrequestwd.php',
               data: {
-                code: res.code
+                code: res.code,
+                wdid:options.wdid
               },
               header: {
                   'content-type': 'application/json'
@@ -274,7 +275,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
         if(!that.data.wdkkgg){
             wx.showToast({
               title: '暂无上传照片',
-              image: '/screenshots/fail.png?1',
+              image: '/screenshots/fail.png?3',
               duration: 2000
             })
             return false;
@@ -311,7 +312,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
                                 })
 
                                     var ccsssdd='删除失败';
-                                    var sssccddimg='/screenshots/fail.png?1';
+                                    var sssccddimg='/screenshots/fail.png?3';
 
                                 if(that.data.pid>0){
                                       ccsssdd='删除成功';
@@ -387,7 +388,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
         if(!this.data.wdkkgg){
             wx.showToast({
               title: '暂无上传照片',
-              image: '/screenshots/fail.png?1',
+              image: '/screenshots/fail.png?3',
               duration: 2000
             })
             return false;
