@@ -14,7 +14,8 @@ Page({
     sssjjjjsrc:'',
     sssjjjj:'',
     kkgg:'0',
-    sscc:'0'
+    sscc:'0',
+    wdkkgg:'0'
 
   },
   onLoad: function(options) {
@@ -591,10 +592,11 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
                           success: function(res) {
                             //res.data=JSON.parse(res.data);
                             //console.log(res.data)
+                            var newwdkkgg=that.data.wdkkgg+1;
                             that.setData({
                               src:res.data.src,
-                              textsrc:res.data.textsrc
-                             
+                              textsrc:res.data.textsrc,
+                             wdkkgg:newwdkkgg
                             })
 
  /*titlehh:'我的上传/',

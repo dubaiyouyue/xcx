@@ -274,7 +274,7 @@ for (var k = 0, length = tempFilePaths.length; k < length; k++) {
         if(!that.data.wdkkgg) return false;
         wx.showModal({
             title: '提示',
-            content: '确定删除照片吗？',
+            content: '确定删除这张照片吗？',
             success: function(res) {
                 if (res.confirm) {
                     //console.log('确定')
