@@ -12,5 +12,5 @@
     "navigationBarTextStyle":"black",
     "enablePullDownRefresh":true
   },
-  "debug": false
+  "debug": true
 }

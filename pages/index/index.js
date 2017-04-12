@@ -87,7 +87,8 @@ Page({
           that.setData({
             bzkhkshang:that.data.pid,
             srcshang:that.data.src,
-            textsrcshang:that.data.textsrc
+            textsrcshang:that.data.textsrc,
+            textsrcurlshang:that.data.textsrcurl
           })
         }
 
@@ -110,7 +111,7 @@ Page({
               },
               success: function(res) {
                 //console.log(123)
-                
+                //console.log(res.data)
                   that.setData({
                     bzkhkcss:that.data.wdm
                   })
@@ -237,7 +238,7 @@ Page({
     var newbzkhkshang=that.data.pid;
     var newsrcshang=that.data.src;
     var newtextsrcshang=that.data.textsrc;
-    
+    var newtextsrcurlshang=that.data.textsrcurl;
 
 
     if(!that.data.bzkhkcss){
@@ -245,8 +246,10 @@ Page({
         pid:that.data.bzkhkshang,
         src:that.data.srcshang,
         textsrc:that.data.textsrcshang,
+        textsrcurl:that.data.textsrcurlshang,
         bzkhkshang:newbzkhkshang,
         srcshang:newsrcshang,
+        textsrcurlshang:newtextsrcurlshang,
         textsrcshang:newtextsrcshang
       })
 
@@ -310,15 +313,22 @@ Page({
     
 
 
-      console.log(that.data);
+      //console.log(that.data);
     }
   },
     // 长按
     onlongclick: function() {
         //this.setData( { modalHidden: false });
+        var ss = this.data.textsrcurl.split(",");
+          for(var i = 0 ;i<ss.length;i++){
+              if(ss[i] == "" || typeof(ss[i]) == "undefined"){
+                      ss.splice(i,1);
+                      i= i-1;
+              }
+          }
           wx.previewImage({
             current: this.data.src, // 当前显示图片的http链接
-            urls: [this.data.src] // 需要预览的图片http链接列表
+            urls: ss // 需要预览的图片http链接列表
           })
     },
     // 保存
